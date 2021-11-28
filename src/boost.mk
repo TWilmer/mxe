@@ -11,6 +11,7 @@ $(PKG)_FILE     := boost_$(subst .,_,$($(PKG)_VERSION)).tar.bz2
 $(PKG)_URL      := https://$(SOURCEFORGE_MIRROR)/project/boost/boost/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_TARGETS  := $(BUILD) $(MXE_TARGETS)
 $(PKG)_DEPS     := cc bzip2 expat zlib
+$(PKG)_SUFFIX = -mt-x$(if $(findstring x86_64,$(TARGET)),64,32)
 
 $(PKG)_DEPS_$(BUILD) := zlib
 
@@ -69,14 +70,14 @@ define $(PKG)_BUILD
     echo 'set(Boost_THREADAPI "win32")' > '$(CMAKE_TOOLCHAIN_DIR)/$(PKG).cmake'
 
     '$(TARGET)-g++' \
-        -W -Wall -Werror -ansi -pedantic \
+        -W -Wall -Werror -ansi  -std=c++11   -pedantic \
         '$(PWD)/src/$(PKG)-test.cpp' -o '$(PREFIX)/$(TARGET)/bin/test-boost.exe' \
         -DBOOST_THREAD_USE_LIB \
-        -lboost_serialization-mt \
-        -lboost_thread_win32-mt \
-        -lboost_system-mt \
-        -lboost_chrono-mt \
-        -lboost_context-mt
+	-lboost_serialization$($(PKG)_SUFFIX) \
+        -lboost_thread$($(PKG)_SUFFIX) \
+        -lboost_system$($(PKG)_SUFFIX) \
+        -lboost_chrono$($(PKG)_SUFFIX) \
+        -lboost_context$($(PKG)_SUFFIX)
 
     # test cmake
     mkdir '$(1).test-cmake'
