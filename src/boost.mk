@@ -54,6 +54,7 @@ define $(PKG)_BUILD
         --layout=tagged \
         --disable-icu \
         --without-mpi \
+        --with-serialization \
         --without-python \
         --prefix='$(PREFIX)/$(TARGET)' \
         --exec-prefix='$(PREFIX)/$(TARGET)/bin' \
