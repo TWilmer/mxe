@@ -92,7 +92,7 @@ STRIP_LIB       := $(false)
 STRIP_EXE       := $(true)
 
 # disable by setting MXE_USE_CCACHE
-MXE_USE_CCACHE      := mxe
+MXE_USE_CCACHE      := 
 MXE_CCACHE_DIR      := $(PWD)/.ccache
 MXE_CCACHE_BASE_DIR := $(PWD)
 
