@@ -15,6 +15,7 @@ define $(PKG)_BUILD
     cd '$(BUILD_DIR)'  && '$(SOURCE_DIR)/configure' \
         $(MXE_CONFIGURE_OPTS) \
         CXX='$(TARGET)-g++ ' \
+	--disable-documentation \
         CXXFLAGS='--std=c++14 ' \
         PKG_CONFIG='$(PREFIX)/bin/$(TARGET)-pkg-config' \
         MAKE=$(MAKE)
