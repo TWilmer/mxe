@@ -52,3 +52,9 @@ There are several approaches to recursively finding DLL dependencies (alphabetic
   * [pe-util](https://github.com/gsauthof/pe-util) packaged with [mxe](https://github.com/mxe/mxe/blob/master/src/pe-util.mk)
   * [python script](https://github.com/mxe/mxe/blob/master/tools/copydlldeps.py)
   * [shell script](https://github.com/mxe/mxe/blob/master/tools/copydlldeps.md)
+
+
+## dependencies
+
+apt install mm-common
+

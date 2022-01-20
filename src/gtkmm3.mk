@@ -22,12 +22,13 @@ endef
 define $(PKG)_BUILD
     cd '$(1)' && ./configure \
         $(MXE_CONFIGURE_OPTS) \
+        CXXFLAGS='--std=c++14 ' \
         MAKE=$(MAKE)
     $(MAKE) -C '$(1)' -j '$(JOBS)' bin_PROGRAMS= sbin_PROGRAMS= noinst_PROGRAMS=
     $(MAKE) -C '$(1)' -j 1 install bin_PROGRAMS= sbin_PROGRAMS= noinst_PROGRAMS= doc_install='# DISABLED: doc-install.pl'
 
     '$(TARGET)-g++' \
-        -W -Wall -Wno-deprecated-declarations -Werror -pedantic -std=c++11 \
+        -W   -Wno-deprecated-declarations -Werror --std=c++14 \
         -Wno-error=deprecated \
         $($(PKG)_EXTRA_WARNINGS) \
         '$(TEST_FILE)' -o '$(PREFIX)/$(TARGET)/bin/test-gtkmm3.exe' \
