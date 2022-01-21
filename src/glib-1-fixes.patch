@@ -594,7 +594,7 @@ index 1111111..2222222 100644
  Requires: glib-2.0 gobject-2.0
  Requires.private: gmodule-no-export-2.0
 -Libs: -L${libdir} -lgio-2.0
-+Libs: -L${libdir} -lgio-2.0 -ldnsapi -liphlpa
++Libs: -L${libdir} -lgio-2.0 -ldnsapi -liphlpapi
  Libs.private: @ZLIB_LIBS@ @NETWORK_LIBS@ @SELINUX_LIBS@ @COCOA_LIBS@ @CARBON_LIBS@ @LIBMOUNT_LIBS@
  Cflags:
          
